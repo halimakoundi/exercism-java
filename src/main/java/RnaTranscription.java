@@ -1,20 +1,15 @@
 public class RnaTranscription {
-    
-    public String ofDna(String dnaString) {
-        String rnaString = "";
-        for (String strand : dnaString.split("")) {
-            rnaString += toRna(strand);
+
+    public String ofDna(String dnaStrand) {
+        String rnaStrand = "";
+        for (String nucleotide : dnaStrand.split("")) {
+            rnaStrand += rnaFromDna(nucleotide);
         }
-        return rnaString;
+        return rnaStrand;
     }
 
-    private String toRna(String dnaString) {
-        switch(dnaString){
-            case "C": return "G";
-            case "G": return "C";
-            case "T": return "A";
-            case "A": return "U";
-        }
-        return "";
+    private String rnaFromDna(String nucleotideShorthand) {
+        return Nucleotides.fromDna(nucleotideShorthand).rnaComplement;
     }
+
 }
